@@ -1,0 +1,48 @@
+<% include ./partials/header %>
+	<div class="ui  main text container segment">
+		<div class="ui huge header"><%= blog.title %> </div>
+		<div class="ui top attached">
+			<div class="item ">
+				<img class="ui centered rounded image" src="<%= blog.image %>">
+				<div class="content">
+						<span><%= blog.created.toDateString() %></span>
+				</div>
+				<div class="description">
+					<h4>Registration Number</h4>
+					<p><%= blog.body %></p>
+				</div>
+				<% if(currentUser){ %>
+				<a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+
+				<form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+					<button class=" ui red basic button">Delete</button>
+					<% } %>
+				</form>
+
+
+				
+			</div>
+		</div>
+	</div>
+
+
+	<div class="ui  main text container segment" id="comment">
+	
+		<form class="ui form" action="/blogs/<%= blog.id %>/comments" method="POST">
+			<div class="field">
+				<input type="text" name="comment[text]" placeholder="write comment..">
+			</div>
+			<input class="ui violet big basic button" type="submit" id=commentbox>
+				<div class="description">
+					<% blog.comments.forEach(function(comment){ %>
+					<div class="ui divider"></div>
+					<p class="commentText"><i class="disabled User icon"></i><%=comment.text %></p>
+					<div class="meta">
+						<span><%= blog.created.toDateString() %></span>
+					</div>
+					<% }) %>
+				</div>
+		</form>
+	</div>
+			
+<% include ./partials/footer %>

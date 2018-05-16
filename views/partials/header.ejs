@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title>ProBlog</title>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+	</head>
+	<body>
+		<div class="ui fixed inverted menu">
+			<div class="ui container">
+				<div class="header item"><i class="Comment icon"></i><a href="/blogs">Blog Site</a>
+				</div>
+				<a href="/" class="item">Home</a>
+				<% if(currentUser){ %>
+				<a href="/blogs/new" class="item">New Post</a>
+				<a class="item float right">Admin</a>
+				<a href="/logout" class="item">Logout</a>
+				<%}%>
+			</div>
+		</div>
